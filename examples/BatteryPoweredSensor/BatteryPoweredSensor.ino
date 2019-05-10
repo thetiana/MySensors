@@ -74,6 +74,10 @@ void loop()
 	// 3.44/1023 = Volts per bit = 0.003363075
 
 	int batteryPcnt = sensorValue / 10;
+	// avoid getting battery persentage 102%
+  if(batteryPcnt > 100) {
+    batteryPcnt = 100;
+    }
 
 #ifdef MY_DEBUG
 	float batteryV  = sensorValue * 0.003363075;
